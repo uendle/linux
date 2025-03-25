@@ -1,0 +1,93 @@
+root@uendle:/home/uendle# apt --help
+apt 2.7.14 (amd64)
+Uso: comando apt [opções]
+
+apt é um gerenciador de pacotes de linha de comando e fornece comandos para
+pesquisar e gerenciar, bem como consultar informações sobre pacotes.
+Ele fornece a mesma funcionalidade que as ferramentas especializadas do APT,
+como apt-get e apt-cache, mas permite opções mais adequadas para
+uso interativo por padrão.
+
+Comandos mais utilizados:
+  list - listar pacotes com base em nomes de pacotes
+  search - pesquisar nas descrições dos pacotes
+  show - mostrar detalhes do pacote
+  install - instalar pacotes
+  reinstall - reinstalar os pacotes
+  remove - remover os pacotes
+  autoremove - remove automaticamente todos os pacotes não utilizados
+  update - atualiza a lista de pacotes disponíveis
+  upgrade - atualiza o sistema ao instalar/atualizar pacotes
+  full-upgrade - atualiza o sistema ao remover/instalar/atualizar pacotes
+  edit-sources - edite o ficheiro de informações de origem
+  satisfy - satisfazer as strings de dependência
+
+Veja apt(8) para mais informação sobre os comandos disponíveis.
+As opções de configuração e sintaxe são detalhadas em apt.conf(5).
+Informações sobre como configurar as fontes podem ser encontradas em fontes.list(5).
+As escolhas de pacote e versão podem ser expressas via apt_preferences(5).
+Detalhes de segurança estão disponíveis em apt-secure(8).
+                                   Este APT tem Poderes de Super Vaca.
+
+
+
+
+
+
+
+
+root@uendle:/home/uendle# apt-get --help
+apt 2.7.14 (amd64)
+Uso: comando apt-get [opções]
+        apt-get [opções] instalar|remover pkg1 [pkg2 ...]
+        apt-get [opções] fonte pkg1 [pkg2 ...]
+
+apt-get é uma interface de linha de comando para recuperação de pacotes
+e informações sobre eles através de fontes autenticadas e
+para instalação, atualização e remoção de pacotes juntos
+com as suas dependências.
+
+Comandos mais utilizados:
+  update - Obtém novas listas de pacotes
+  upgrade - Realiza uma atualização
+  install - Instala novos pacotes (um pacote é libc6 e não libc6.deb)
+  reinstall - Reinstalar pacotes (pkg é libc6 não libc6.deb)
+  remove - Remove pacotes
+  purge - Remove e expurga ("purge") pacotes
+  autoremove - Remove automaticamente todos os pacotes não usados
+  dist-upgrade - Atualiza a distribuição, veja apt-get(8)
+  dselect-upgrade - Segue as seleções do dselect
+  build-dep - Configura as dependências de compilação de pacotes fonte
+  satisfy - Satisfaça as dependências de strings
+  clean - Apaga arquivos baixados para instalação
+  autoclean - Apaga arquivos antigos baixados para instalação
+  check - Verifica se não há dependências quebradas
+  source - Baixa arquivos fonte
+  download - Obter o pacote binário para o directório actual
+  changelog - Obter e mostrar o changelog de um pacote
+
+Veja apt-get(8) para mais informação sobre os comandos disponíveis.
+As opções de configuração e sintaxe são detalhadas em apt.conf(5).
+Informações sobre como configurar as fontes podem ser encontradas em fontes.list(5).
+As escolhas de pacote e versão podem ser expressas via apt_preferences(5).
+Detalhes de segurança estão disponíveis em apt-secure(8).
+                                   Este APT tem Poderes de Super Vaca.
+
+
+
+
+
+apt install [nome do programa]
+apt remove [nome do programa]
+apt list #lista todos os pacotes disponiveis
+apt list --upgradable #lista todos os pacotes disponiveis para update
+apt list --installed #lista todos os pacotes instalados
+apt search [nome do programa]
+apt edit-source #abre o arquivo de lista de repositorios
+apt autoremove remove pacotes nao mais utilizados
+
+
+
+
+
+

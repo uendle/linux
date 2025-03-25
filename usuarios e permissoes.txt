@@ -1,0 +1,916 @@
+﻿ubuntu@ip-172-31-22-233:~$ sudo su
+root@ip-172-31-22-233:/home/ubuntu# useradd uendle.souza
+root@ip-172-31-22-233:/home/ubuntu# userdel -f uendle.souza
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# useradd uendle.souza
+root@ip-172-31-22-233:/home/ubuntu# ls -l /home
+total 4
+drwxr-x--- 4 ubuntu ubuntu 4096 Mar 18 00:52 ubuntu
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# userdel -f uendle.souza
+root@ip-172-31-22-233:/home/ubuntu# useradd uendle.souza -m -c "uendle dos santos souza"
+root@ip-172-31-22-233:/home/ubuntu# ls -l /home
+total 8
+drwxr-x--- 4 ubuntu       ubuntu       4096 Mar 18 00:52 ubuntu
+drwxr-x--- 2 uendle.souza uendle.souza 4096 Mar 18 00:58 uendle.souza
+
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# passwd uendle.souza
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+
+
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# chsh --help
+Usage: chsh [options] [LOGIN]
+
+Options:
+  -h, --help                    display this help message and exit
+  -R, --root CHROOT_DIR         directory to chroot into
+  -s, --shell SHELL             new login shell for the user account
+
+root@ip-172-31-22-233:/home/ubuntu# chsh -s /bin/bash uendle.souza
+root@servidor1:/home/uendle# useradd lili -c "meu amor" -m -e 19/03/2025
+root@servidor1:/home/uendle# passwd lili
+New password: 
+Retype new password: 
+passwd: password updated successfully
+root@servidor1:/home/uendle# usermod lili -s /bin/bash
+usermod: no changes
+
+
+
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# userdel --help
+Usage: userdel [options] LOGIN
+
+Options:
+  -f, --force                   force some actions that would fail otherwise
+                                e.g. removal of user still logged in
+                                or files, even if not owned by the user
+  -h, --help                    display this help message and exit
+  -r, --remove                  remove home directory and mail spool
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+      --extrausers              Use the extra users database
+  -Z, --selinux-user            remove any SELinux user mapping for the user
+
+root@ip-172-31-22-233:/home/ubuntu# userdel -r -f uendle.souza
+userdel: uendle.souza mail spool (/var/mail/uendle.souza) not found
+root@ip-172-31-22-233:/home/ubuntu# ls -l /home
+total 4
+drwxr-x--- 4 ubuntu ubuntu 4096 Mar 18 00:52 ubuntu
+
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# useradd uendle.souza -m -c "uendle dos santos souza" -s /bin/bash
+root@ip-172-31-22-233:/home/ubuntu# ls -l /home
+total 8
+drwxr-x--- 4 ubuntu       ubuntu       4096 Mar 18 00:52 ubuntu
+drwxr-x--- 2 uendle.souza uendle.souza 4096 Mar 18 01:13 uendle.souza
+
+
+
+
+root@ip-172-31-22-233:/home/ubuntu# passwd uendle.souza
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+
+
+
+root@servidor1:/home/uendle# passwd lili -e #força o usuario a trocar a senha
+
+
+
+
+
+root@servidor1:/home/uendle# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+usbmux:x:113:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+uendle:x:1000:1000:uendle:/home/uendle:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+convidado:x:1001:1001:usuario compartilhado:/home/convidado:/bin/bash
+lili:x:1002:1002:meu amor:/home/lili:/bin/bash
+root@servidor1:/home/uendle# cat /etc/passwd | more
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+usbmux:x:113:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+uendle:x:1000:1000:uendle:/home/uendle:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+convidado:x:1001:1001:usuario compartilhado:/home/convidado:/bin/bash
+lili:x:1002:1002:meu amor:/home/lili:/bin/bash
+
+
+
+
+
+
+root@servidor1:/# useradd usuario1 -c "usuario principal" -s /bin/bash -m -p $(openssl passwd -6 Senha123)
+
+
+
+
+
+
+
+root@servidor1:/# mkdir /scripts
+root@servidor1:/# cd scripts/
+root@servidor1:/scripts# nano scipt1.sh
+root@servidor1:/scripts# cat scipt1.sh
+#!/bin/bash
+
+echo "Criando Usuarios!!!!"
+
+useradd usuario1 -c "primeiro usuario" -s /bin/bash -m -p $(openssl passwd -6 Senha1)
+passwd usuario1 -e
+
+useradd usuario2 -c "primeiro usuario" -s /bin/bash -m -p $(openssl passwd -6 Senha1)
+passwd usuario2 -e
+
+useradd usuario3 -c "primeiro usuario" -s /bin/bash -m -p $(openssl passwd -6 Senha1)
+passwd usuario3 -e
+
+useradd usuario4 -c "primeiro usuario" -s /bin/bash -m -p $(openssl passwd -6 Senha1)
+passwd usuario4 -e
+
+useradd usuario5 -c "primeiro usuario" -s /bin/bash -m -p $(openssl passwd -6 Senha1)
+passwd usuario5 -e
+
+echo "Usuarios Criados"
+
+
+root@servidor1:/scripts# ./scipt1.sh 
+Criando Usuarios!!!!
+passwd: password expiry information changed.
+passwd: password expiry information changed.
+passwd: password expiry information changed.
+passwd: password expiry information changed.
+passwd: password expiry information changed.
+Usuarios Criados
+
+
+
+
+
+
+
+root@servidor1:/scripts# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+usbmux:x:113:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+uendle:x:1000:1000:uendle:/home/uendle:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+convidado:x:1001:1001:usuario compartilhado:/home/convidado:/bin/bash
+lili:x:1002:1002:meu amor:/home/lili:/bin/bash
+usuario1:x:1003:1003:primeiro usuario:/home/usuario1:/bin/bash
+usuario2:x:1004:1004:primeiro usuario:/home/usuario2:/bin/bash
+usuario3:x:1005:1005:primeiro usuario:/home/usuario3:/bin/bash
+usuario4:x:1006:1006:primeiro usuario:/home/usuario4:/bin/bash
+usuario5:x:1007:1007:primeiro usuario:/home/usuario5:/bin/bash
+
+
+
+
+
+
+
+
+root@servidor1:/# cat etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+
+
+root@servidor1:/# usermod -G adm,sudo lili 
+root@servidor1:/# cat etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili #agora lilifaz parte do grupo adm
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili #agora lilifaz parte do grupo sudo
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+root@servidor1:/# 
+
+
+
+
+
+
+root@servidor1:/# groupadd GRP_ADM
+root@servidor1:/# groupadd GRP_VEN
+root@servidor1:/# groupadd GRP_TESTE
+root@servidor1:/# groupdel GRP_TESTE
+root@servidor1:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+GRP_ADM:x:1008:
+GRP_VEN:x:1009:
+root@servidor1:/# useradd usuario_adm -c "novo administrador" -m -s /bin/bash -p $(openssl passwd -6 Senha123) -G GRP_ADM
+root@servidor1:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+GRP_ADM:x:1008:usuario_adm
+GRP_VEN:x:1009:
+usuario_adm:x:1010:
+root@servidor1:/# usermod -G GPR_VEN,GRP_ADM usuario1
+usermod: group 'GPR_VEN' does not exist
+root@servidor1:/# usermod -G GRP_VEN,GRP_ADM usuario1
+root@servidor1:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+GRP_ADM:x:1008:usuario_adm,usuario1
+GRP_VEN:x:1009:usuario1
+usuario_adm:x:1010:
+root@servidor1:/# usermod -G GRP_VEN,GRP_ADM usuario1,usuario2
+usermod: user 'usuario1,usuario2' does not exist
+root@servidor1:/# usermod -G GRP_VEN,GRP_ADM usuario2
+root@servidor1:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+GRP_ADM:x:1008:usuario_adm,usuario1,usuario2
+GRP_VEN:x:1009:usuario1,usuario2
+usuario_adm:x:1010:
+root@servidor1:/# gpasswd -d usuario2 GRP_ADM
+Removing user usuario2 from group GRP_ADM
+root@servidor1:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,uendle,lili
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:uendle
+floppy:x:25:
+tape:x:26:
+sudo:x:27:uendle,lili
+audio:x:29:
+dip:x:30:uendle
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:uendle
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+messagebus:x:104:
+systemd-timesync:x:105:
+input:x:106:
+sgx:x:107:
+kvm:x:108:
+render:x:109:
+lxd:x:110:uendle
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+uendle:x:1000:
+convidado:x:1001:
+lili:x:1002:
+usuario1:x:1003:
+usuario2:x:1004:
+usuario3:x:1005:
+usuario4:x:1006:
+usuario5:x:1007:
+GRP_ADM:x:1008:usuario_adm,usuario1
+GRP_VEN:x:1009:usuario1,usuario2
+usuario_adm:x:1010:
+root@servidor1:/# 
+
+
+
+
+
+
+root@servidor1:/# mkdir vendas
+root@servidor1:/# mkdir adm
+root@servidor1:/# ls -l
+total 2097240
+drwxr-xr-x   2 root root       4096 mar 20 03:13 adm
+lrwxrwxrwx   1 root root          7 fev 16  2024 bin -> usr/bin
+drwxr-xr-x   4 root root       4096 mar 14 03:15 boot
+dr-xr-xr-x   2 root root       4096 mar 13 02:59 cdrom
+drwxr-xr-x  20 root root       4080 mar 20 02:57 dev
+drwxr-xr-x  96 root root       4096 mar 19 04:28 etc
+drwxr-xr-x  11 root root       4096 mar 19 04:22 home
+-rw-r--r--   1 root root        123 mar 17 03:07 leia.txt
+lrwxrwxrwx   1 root root          7 fev 16  2024 lib -> usr/lib
+lrwxrwxrwx   1 root root          9 fev 16  2024 lib32 -> usr/lib32
+lrwxrwxrwx   1 root root          9 fev 16  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root root         10 fev 16  2024 libx32 -> usr/libx32
+drwx------   2 root root      16384 mar 13 03:10 lost+found
+drwxr-xr-x   2 root root       4096 fev 16  2024 media
+drwxr-xr-x   2 root root       4096 fev 16  2024 mnt
+drwxr-xr-x   2 root root       4096 fev 16  2024 opt
+dr-xr-xr-x 168 root root          0 mar 20 02:57 proc
+drwx------   6 root root       4096 mar 17 03:07 root
+drwxr-xr-x  28 root root        820 mar 20 02:58 run
+lrwxrwxrwx   1 root root          8 fev 16  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root root       4096 mar 19 03:54 scripts
+drwxr-xr-x   6 root root       4096 fev 16  2024 snap
+drwxr-xr-x   2 root root       4096 fev 16  2024 srv
+-rw-------   1 root root 2147483648 mar 13 03:15 swap.img
+dr-xr-xr-x  13 root root          0 mar 20 02:57 sys
+drwxrwxrwt  12 root root       4096 mar 20 03:03 tmp
+drwxr-xr-x  14 root root       4096 fev 16  2024 usr
+drwxr-xr-x  13 root root       4096 fev 16  2024 var
+drwxr-xr-x   2 root root       4096 mar 20 03:13 vendas
+
+
+
+t@servidor1:/# chown usuario1:GRP_ADM /adm
+root@servidor1:/# ls -l
+total 2097240
+drwxr-xr-x   2 usuario1 GRP_ADM       4096 mar 20 03:13 adm
+lrwxrwxrwx   1 root     root             7 fev 16  2024 bin -> usr/bin
+drwxr-xr-x   4 root     root          4096 mar 14 03:15 boot
+dr-xr-xr-x   2 root     root          4096 mar 13 02:59 cdrom
+drwxr-xr-x  20 root     root          4080 mar 20 02:57 dev
+drwxr-xr-x  96 root     root          4096 mar 19 04:28 etc
+drwxr-xr-x  11 root     root          4096 mar 19 04:22 home
+-rw-r--r--   1 root     root           123 mar 17 03:07 leia.txt
+lrwxrwxrwx   1 root     root             7 fev 16  2024 lib -> usr/lib
+lrwxrwxrwx   1 root     root             9 fev 16  2024 lib32 -> usr/lib32
+lrwxrwxrwx   1 root     root             9 fev 16  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root     root            10 fev 16  2024 libx32 -> usr/libx32
+drwx------   2 root     root         16384 mar 13 03:10 lost+found
+drwxr-xr-x   2 root     root          4096 fev 16  2024 media
+drwxr-xr-x   2 root     root          4096 fev 16  2024 mnt
+drwxr-xr-x   2 root     root          4096 fev 16  2024 opt
+dr-xr-xr-x 168 root     root             0 mar 20 02:57 proc
+drwx------   6 root     root          4096 mar 17 03:07 root
+drwxr-xr-x  28 root     root           820 mar 20 02:58 run
+lrwxrwxrwx   1 root     root             8 fev 16  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root     root          4096 mar 19 03:54 scripts
+drwxr-xr-x   6 root     root          4096 fev 16  2024 snap
+drwxr-xr-x   2 root     root          4096 fev 16  2024 srv
+-rw-------   1 root     root    2147483648 mar 13 03:15 swap.img
+dr-xr-xr-x  13 root     root             0 mar 20 02:57 sys
+drwxrwxrwt  12 root     root          4096 mar 20 03:03 tmp
+drwxr-xr-x  14 root     root          4096 fev 16  2024 usr
+drwxr-xr-x  13 root     root          4096 fev 16  2024 var
+drwxr-xr-x   2 root     root          4096 mar 20 03:13 vendas
+
+
+
+
+
+
+root@servidor1:/# chown usuario2:GRP_VEN /vendas
+root@servidor1:/# ls -l
+total 2097240
+drwxr-xr-x   2 usuario1 GRP_ADM       4096 mar 20 03:13 adm
+lrwxrwxrwx   1 root     root             7 fev 16  2024 bin -> usr/bin
+drwxr-xr-x   4 root     root          4096 mar 14 03:15 boot
+dr-xr-xr-x   2 root     root          4096 mar 13 02:59 cdrom
+drwxr-xr-x  20 root     root          4080 mar 20 02:57 dev
+drwxr-xr-x  96 root     root          4096 mar 19 04:28 etc
+drwxr-xr-x  11 root     root          4096 mar 19 04:22 home
+-rw-r--r--   1 root     root           123 mar 17 03:07 leia.txt
+lrwxrwxrwx   1 root     root             7 fev 16  2024 lib -> usr/lib
+lrwxrwxrwx   1 root     root             9 fev 16  2024 lib32 -> usr/lib32
+lrwxrwxrwx   1 root     root             9 fev 16  2024 lib64 -> usr/lib64
+lrwxrwxrwx   1 root     root            10 fev 16  2024 libx32 -> usr/libx32
+drwx------   2 root     root         16384 mar 13 03:10 lost+found
+drwxr-xr-x   2 root     root          4096 fev 16  2024 media
+drwxr-xr-x   2 root     root          4096 fev 16  2024 mnt
+drwxr-xr-x   2 root     root          4096 fev 16  2024 opt
+dr-xr-xr-x 167 root     root             0 mar 20 02:57 proc
+drwx------   6 root     root          4096 mar 17 03:07 root
+drwxr-xr-x  28 root     root           820 mar 20 02:58 run
+lrwxrwxrwx   1 root     root             8 fev 16  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root     root          4096 mar 19 03:54 scripts
+drwxr-xr-x   6 root     root          4096 fev 16  2024 snap
+drwxr-xr-x   2 root     root          4096 fev 16  2024 srv
+-rw-------   1 root     root    2147483648 mar 13 03:15 swap.img
+dr-xr-xr-x  13 root     root             0 mar 20 02:57 sys
+drwxrwxrwt  12 root     root          4096 mar 20 03:03 tmp
+drwxr-xr-x  14 root     root          4096 fev 16  2024 usr
+drwxr-xr-x  13 root     root          4096 fev 16  2024 var
+drwxr-xr-x   2 usuario2 GRP_VEN       4096 mar 20 03:13 vendas
+
+
+
+
+
+root@servidor1:/# chmod 777 arquivo #da permisão total para o arquivo
+dono------grupo-------outros
+leitura(r)--> 4
+gravaçao(w)-->2
+execução(x)-->1
+soma as permisões 
+
+
+
+
+
+
+
+
