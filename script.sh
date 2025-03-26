@@ -1,63 +1,112 @@
-#!/bin/bash
-#solicita o root
-sudo su
-#criar diretorios na raiz(/)
-cd /
-mkdir publico adm ven sec
 
-#criar grupo 
+
+#!/bin/bash
+
+#diretorios apagados
+rm -rf /adm 
+rm -rf /ven
+rm -rf /sec
+rm -rf /publico
+
+rm -rf /home/carlos
+rm -rf /home/maria
+rm -rf /home/joao
+rm -rf /home/debora
+rm -rf /home/sebastiao
+rm -rf /home/roberto
+rm -rf /home/josefina
+rm -rf /home/amanda
+rm -rf /home/rogerio
+
+echo "diretorios apagados"
+
+#grupos deletados
+groupdel GRP_ADM
+groupdel GRP_VEN
+groupdel GRP_SEC
+echo "grupos apagados"
+
+#usuarios deletados
+userdel carlos
+userdel maria
+userdel joao
+userdel debora
+userdel sebastiao
+userdel roberto
+userdel josefina
+userdel amanda
+userdel rogerio
+echo "usuarios deletados"
+
+#criar diretorios
+mkdir /adm /ven /sec /publico
+echo "diretorios criados"
+
+#criar grupos
 groupadd GRP_ADM
 groupadd GRP_VEN
 groupadd GRP_SEC
+echo "grupos criados"
 
-#criar usuarios e adicionando ao grupo
-# -m cria o diretorio de usuario em /HOME
-# -c adiciona um comentario ao usuario criado
-# -p adiciona uma senha ao usuario riado 
-# -s define um shell para o usuario
-# -G adiciona o usuario ao grupo GRP_ADM
+#criar usuarios
+useradd carlos -m -c "carlos administração" -s /bin/bash 
+useradd maria -m -c "maria administração" -s /bin/bash
+useradd joao -m -c "joao administrção" -s /bin/bash
 
-useradd carlos -m -c "carlos administração" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_ADM
-passwd -i carlos
+useradd debora -m -c "debora vendas" -s /bin/bash
+useradd sebastiao -m -c "sebastiao vendas" -s /bin/bash
+useradd roberto -m -c "roberto vendas" -s /bin/bash
 
-useradd maria -m -c "maria administração" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_ADM
-passwd -i maria
+useradd josefina -m -c "josefina secretaria" -s /bin/bash
+useradd amanda -m -c "amanda secretaria" -s /bin/bash
+useradd rogerio -m -c "rogerio secretaria" -s /bin/bash
 
-useradd joao -m -c "joao administração" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_ADM
-passwd -i joao
+echo "usuarios criados"
 
-#GRP_VEN
-useradd debora -m -c "debora vendas" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_VEN
-passwd -i debora
+#criando e solicitando primeira senha
 
-useradd sebastiana -m -c "sebastiana vendas" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_VEN
-passwd -i sebastiana
+passwd -e carlos
+passwd -e maria
+passwd -e joao
 
-useradd roberto -m -c "roberto vendas" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_VEN
-passwd -i roberto
+passwd -e debora
+passwd -e sebastiao
+passwd -e roberto
 
-#GRP_SEC
-useradd josefina -m -c "josefina secretaria" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_SEC
-passwd -i josefina
+passwd -e josefina
+passwd -e amanda
+passwd -e rogerio
 
-useradd amanda -m -c "amanda secretaria" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_SEC
-passwd -i amanda
+echo "atributo de senha ok"
 
-useradd rogerio -m -c "rogerio secretaria" -p $(openssl passwd -crypt "Senha") -s /bin/bash -G GRP_SEC
-passwd -i rogerio
+#adicionando usuarisos aos grupos
+usermod -aG GRP_ADM carlos
+usermod -aG GRP_ADM maria
+usermod -aG GRP_ADM joao
 
-#adicionando grupo aos diretorios
-chown :GRP_ADM /adm
-chown :GRP_VEN /ven
-chown :GRP_SEC /SEC
+usermod -aG GRP_VEN debora
+usermod -aG GRP_VEN sebastiao
+usermod -aG GRP_VEN roberto
 
-#liberando acesso ao diretorios
+usermod -aG GRP_SEC josefina
+usermod -aG GRP_SEC amanda
+usermod -aG GRP_SEC rogerio
+
+echo "usuarios adicionados aos grupos"
+
+#atribuindo grupo a diretorios
+
+chown -R :GRP_ADM /adm
+chown -R :GRP_VEN /ven
+chown -R :GRP_SEC /sec
+
+
+echo "grupo atribuido aos diretorios"
+
+#gerenciando permissoes 
+
 chmod 770 /adm
 chmod 770 /ven
 chmod 770 /sec
 
-
-#liberando acesso aos diretorios publico
 chmod 777 /publico
-
-
