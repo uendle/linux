@@ -47,17 +47,17 @@ groupadd GRP_SEC
 echo "grupos criados"
 
 #criar usuarios
-useradd carlos -m -c "carlos administração" -p $(openssl passwd -6 123)-s /bin/bash 
-useradd maria -m -c "maria administração" -s /bin/bash
-useradd joao -m -c "joao administrção" -s /bin/bash
+useradd carlos -m -c "carlos administração" -p $(openssl passwd -6 123) -s /bin/bash 
+useradd maria -m -c "maria administração" -p $(openssl passwd -6 123) -s /bin/bash
+useradd joao -m -c "joao administrção" -p $(openssl passwd -6 123) -s /bin/bash
 
-useradd debora -m -c "debora vendas" -s /bin/bash
-useradd sebastiao -m -c "sebastiao vendas" -s /bin/bash
-useradd roberto -m -c "roberto vendas" -s /bin/bash
+useradd debora -m -c "debora vendas" -p $(openssl passwd -6 123) -s /bin/bash
+useradd sebastiao -m -c "sebastiao vendas" -p $(openssl passwd -6 123) -s /bin/bash
+useradd roberto -m -c "roberto vendas" -p $(openssl passwd -6 123) -s /bin/bash
 
-useradd josefina -m -c "josefina secretaria" -s /bin/bash
-useradd amanda -m -c "amanda secretaria" -s /bin/bash
-useradd rogerio -m -c "rogerio secretaria" -s /bin/bash
+useradd josefina -m -c "josefina secretaria" -p $(openssl passwd -6 123) -s /bin/bash
+useradd amanda -m -c "amanda secretaria" -p $(openssl passwd -6 123) -s /bin/bash
+useradd rogerio -m -c "rogerio secretaria" -p $(openssl passwd -6 123) -s /bin/bash
 
 echo "usuarios criados"
 
@@ -106,6 +106,4 @@ echo "grupo atribuido aos diretorios"
 chmod 770 /adm
 chmod 770 /ven
 chmod 770 /sec
-
-<<<<<<< HEAD
 chmod 777 /publico
