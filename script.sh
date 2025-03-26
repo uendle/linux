@@ -47,7 +47,7 @@ groupadd GRP_SEC
 echo "grupos criados"
 
 #criar usuarios
-useradd carlos -m -c "carlos administração" -p $(openssl passwd -6 Senha) -s /bin/bash 
+useradd carlos -m -c "carlos administração" -p $(openssl passwd -6 Senha123) -s /bin/bash 
 useradd maria -m -c "maria administração" -s /bin/bash
 useradd joao -m -c "joao administrção" -s /bin/bash
 
